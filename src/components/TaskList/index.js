@@ -1,6 +1,5 @@
 import React from "react";
 import {useDispatch, useSelector} from "react-redux";
-import PropTypes from "prop-types";
 import Task from "../Task";
 import LoadingRow from "../LoadingRow";
 import {updateTaskState} from "../../lib/redux/store";
@@ -59,7 +58,7 @@ export default function TaskList() {
 
   // 아직 로딩 중일 때에 보여줄 모습입니다.
   if (status === 'loading') return (
-    <div className="list-items">
+    <div className="list-items" data-testid="loading" key="loading">
       <LoadingRow />
       <LoadingRow />
       <LoadingRow />
@@ -71,7 +70,7 @@ export default function TaskList() {
 
   // 아직 등록된 Task 가 없을때 보여줄 모습입니다.
   if (tasks.length === 0) return (
-    <div className="list-items">
+    <div className="list-items" data-testid="empty" key="empty">
       <div className="wrapper-message">
         <span className="icon-check" />
         <p className="title-message">You Have no tasks</p>
@@ -82,7 +81,7 @@ export default function TaskList() {
 
   // 컴포넌트 구조입니다.
   return (
-    <div className="list-items">
+    <div className="list-items" data-testid="success" key="success">
       {tasks.map((task) => (
         <Task
           key={task.id}
@@ -94,12 +93,3 @@ export default function TaskList() {
     </div>
   );
 }
-TaskList.propTypes = {
-  loading: PropTypes.bool,
-  tasks: PropTypes.arrayOf(Task.propTypes.task).isRequired,
-  onPinTask: PropTypes.func,
-  onArchiveTask: PropTypes.func
-};
-TaskList.defaultProps = {
-  loading: false
-};
