@@ -53,7 +53,7 @@ const Task = ({ task: { id, title, state }, onArchiveTask, onPinTask }) => {
           type="text"
           id={id}
           name="title"
-          value={title}
+          value={`* ${title}`}
         />
       </label>
       {state !== "TASK_ARCHIVED" && (
