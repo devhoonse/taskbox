@@ -28,6 +28,18 @@ Default.args = {
 };
 
 /**
+ * story 4
+ * @type {any}
+ */
+export const LongTitle = Template.bind({});
+LongTitle.args = {
+  task: {
+    ...Default.args.task,
+    title: 'TASK_INBOX'.repeat(1000)
+  }
+};
+
+/**
  * story 2
  * @type {any}
  */

@@ -54,6 +54,7 @@ const Task = ({ task: { id, title, state }, onArchiveTask, onPinTask }) => {
           id={id}
           name="title"
           value={`${title}`}
+          style={{ textOverflow: 'ellipsis' }}
         />
       </label>
       {state !== "TASK_ARCHIVED" && (
